@@ -51,6 +51,7 @@ This example will simply test the performance of the Jolie interpreter itself. I
 $jolie -C "Threads=100" -C "Increments=100" -C "Exponential=false" ../benchmark.ol sumbenchmark.ol 
 ```
 Below is a table describing all the supported configuration constants:
+
 | Constant            | Default              | Description                 |
 | :--------------- | :------------------- | :---------------------------|
 | `Name`       | `JolieBenchmark` | The name of the benchmark test. The name is used to specify which folder the benchmark results are dumped to, and is shown in the produced graphs. |
@@ -63,6 +64,7 @@ Below is a table describing all the supported configuration constants:
 
 ## Output
 When performing a benchmark, *JolieBenchmark* will for each round print the results to the console. For each round the following information is printed:
+
 | Column            | Description              |
 | :--------------- | :------------------- |
 | Round 	| The current round number. |
@@ -77,6 +79,7 @@ When performing a benchmark, *JolieBenchmark* will for each round print the resu
 Similarly for each round a `.csv` file is dumped into a folder called `TESTNAME-Output/`, where `TESTNAME` is the name defined for the current test. The `.csv` files are named according to `XX-overall-TESTNAME.csv`, where `xx` is the number of threads used.
 
 The `.csv` files contains a row for each sample, so that the result of individual samples can be inspected, and contains the following 5 columns:
+
 | Column            | Description              |
 | :--------------- | :------------------- |
 | timestamp | The UNIX timestamp of when the sample finished. |
