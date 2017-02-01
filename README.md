@@ -133,7 +133,6 @@ define benchmark
 {
 	sum@Server( { .x = 6, .y = 4} )( res )
 }
-
 ```
 ### Running
 For the sake of the example we set the starting number of threads to 10 when executing the benchmark.
