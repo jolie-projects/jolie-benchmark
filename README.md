@@ -40,7 +40,6 @@ define benchmark
 	// Place the operation calls you wish to benchmark here
 	nullProcess
 }
-
 ```
 This example will simply test the performance of the Jolie interpreter itself. It should however be clear that by simply defining an output port to an external service and placing calls to the service in the `Benchmark` procedure, an external service is as easily benchmarked. See the example below.
 
@@ -113,7 +112,6 @@ main
 		response = request.x + request.y
 	}
 }
-
 ```
 
 ### Benchmark
