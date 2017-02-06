@@ -32,7 +32,7 @@ define setupOutputFolder {
 }
 
 define printTableHeader {
-	columnWidth = 9;
+	columnWidth = 10;
 	columns = 8;
 	
 	leftPad@StringUtils( "" { .char = "-", .length = columnWidth + 2 } )( columnBorder );		
@@ -46,7 +46,7 @@ define printTableHeader {
 	leftPad@StringUtils( "Res. Min." { .char = " ", .length = columnWidth } )( minHeader );
 	leftPad@StringUtils( "Res. Max." { .char = " ", .length = columnWidth } )( maxHeader );
 	leftPad@StringUtils( "Res. Avg." { .char = " ", .length = columnWidth } )( avgHeader );
-	leftPad@StringUtils( "Samples/s" { .char = " ", .length = columnWidth } )( throughputHeader );
+	leftPad@StringUtils( "Throughput" { .char = " ", .length = columnWidth } )( throughputHeader );
 	leftPad@StringUtils( "Samples" { .char = " ", .length = columnWidth } )( samplesHeader );
 	leftPad@StringUtils( "Failed" { .char = " ", .length = columnWidth } )( failedHeader );
 
@@ -93,10 +93,14 @@ define printRoundRow {
 
 	roundTime = double(roundEnd - roundStart) / 1000;
 
-	throughput = double(count - failed) / roundTime;
+	if (roundTime == 0) {
+		throughput = "-"
+	} else {
+		throughput = double(count - failed) / roundTime;
+		round@Math( throughput { .decimals = 1 } )( throughput )
+	};
 
-	round@Math( mean { .decimals = 2 } )( mean );
-	round@Math( throughput { .decimals = 2 } )( throughput );
+	round@Math( mean { .decimals = 1 } )( mean );
 
 	leftPad@StringUtils( string(round) { .char = " ", .length = columnWidth } )( round );
 	leftPad@StringUtils( string(threads) { .char = " ", .length = columnWidth } )( threadsPad );

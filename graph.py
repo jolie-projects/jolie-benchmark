@@ -89,12 +89,9 @@ for label in elapsed:
     boxPolygon = Polygon(boxCoords, facecolor=palegreen)
     ax1.add_patch(boxPolygon)
  
-  # Plot the errors
-  if (len(error_x) > 0):
-    ax1.scatter(error_x, error_y, color='r', marker='x', zorder=3)
- 
   # Plot throughput
   ax2 = ax1.twinx()
+  ax2.set_yscale('log')
   ax2.plot(throughput_data, 'o-', color=paleblue, linewidth=2, markersize=8)
  
   # Label the axis
@@ -108,6 +105,7 @@ for label in elapsed:
  
   # Turn off scientific notation for Y axis
   ax1.yaxis.set_major_formatter(ScalarFormatter(False))
+  ax2.yaxis.set_major_formatter(ScalarFormatter(False))
  
   # Set the lower y limit to the match the first column
   # ax1.set_ylim(ymin=bp['boxes'][0].get_ydata()[0])
@@ -121,10 +119,9 @@ for label in elapsed:
   # Add a legend
   line1 = Line2D([], [], marker='s', color=palegreen, markersize=10, linewidth=0)
   line2 = Line2D([], [], marker='o', color=paleblue, markersize=8, linewidth=2)
-  line3 = Line2D([], [], marker='x', color='r', linewidth=0, markeredgewidth=2)
   prop = matplotlib.font_manager.FontProperties(size='small')
-  figlegend((line1, line2, line3), ('Response Time', 'Throughput', 'Failures'),
-    'lower center', prop=prop, ncol=3)
+  figlegend((line1, line2), ('Response Time', 'Throughput'),
+    'lower center', prop=prop, ncol=2)
  
   # Write the PNG file
   savefig(label)
