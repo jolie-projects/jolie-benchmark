@@ -3,6 +3,13 @@
 
 As Jolie supports several protocols and networking mediums, benchmarks written for *JolieBenchmark* are not restricted to services implemented in Jolie.
 
+**Remark:** The *JolieBenchmark* tool was developed alongside my master's thesis on implementing an event-driven version of the *Jolie* interpreter. 
+In the thesis, an earlier version of the tool is presented. Since the thesis, additional work has been put into streamlining the development 
+of benchmarks, better configuration options and updated the graphing tool to produce easier-to-read graphs.
+
+In this repository, you are able to find the most current version of *JolieBenchmark* along with a comprehensive user's guide, complete with examples 
+and configuration options.
+
 ## System requirements
 The following libraries are required:
 * [Jolie](https://github.com/jolie/jolie)
